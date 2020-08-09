@@ -37,7 +37,22 @@
 }
 .card-header{
    min-height: 238px;
+   padding-top: 25%;
 }
+.card-container:not(:hover) .display-on-hover{
+    display:none;
+}
+
+.card-container:hover {
+    background: rgb(0,10,10);
+    background: linear-gradient(0deg, rgba(0,10,10,1) 0%, rgba(37,255,0,0.3575805322128851) 100%);
+}
+
+.hover-btn,.hover-btn:hover{
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
 
 
 .category{
@@ -52,3 +67,13 @@
 }
 
 
+.heart-icon {
+    width: 25px;
+    height: 25px;
+}
+.clock-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    margin-bottom: 3px;
+}
