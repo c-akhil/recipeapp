@@ -1,0 +1,4 @@
+export default {
+    SET_RECIPE_LIST: 'SET_RECIPE_LIST',
+    SET_RECIPE_DETAILS: 'SET_RECIPE_DETAILS',
+}
