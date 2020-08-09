@@ -51,8 +51,8 @@ class HomeComponet extends React.Component {
 
                         <div className="card-header" >
                             <div className="display-on-hover">
-                                <button type="button" onClick={() => { this.navigateToReceipeDetails(recipe) }} class="btn hover-btn btn-lg btn-block">View More</button>
-                                <button type="button" onClick={() => { this.navigateToReceipeDetails(recipe) }} class="btn hover-btn btn-lg btn-block">Quick View</button>
+                                <button type="button" onClick={() => { this.navigateToReceipeDetails(recipe) }} className="btn hover-btn btn-lg btn-block">View More</button>
+                                <button type="button" onClick={() => { this.navigateToReceipeDetails(recipe) }} className="btn hover-btn btn-lg btn-block">Quick View</button>
                             </div>
                         </div>
                         <div className={"card-body text-left " + (index % 2 == 0 ? 'card-body-even' : 'card-body-odd')}>
