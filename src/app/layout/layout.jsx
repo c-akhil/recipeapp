@@ -9,13 +9,13 @@ class LayoutComponet extends React.Component {
     render() {
         return <React.Fragment>
 
-            <div class=" bg-image">
+            <div className=" bg-image">
 
-                <div class="container ">
-                    <div class="row top-row">
+                <div className="container ">
+                    <div className="row top-row">
 
                     </div>
-                    <div class="row">
+                    <div className="row">
                         {this.props.children}
                     </div>
                 </div>

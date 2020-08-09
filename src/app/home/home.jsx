@@ -13,19 +13,7 @@ class HomeComponet extends React.Component {
 
     };
     componentDidMount() {
-        httpSevice.get(apiendpoints.GET_RECIPE_LIST).then((response) => {
-            let recipeList = response.data;
-            recipeList.forEach((recipe) => {
-                if (recipe.duration === undefined) {
-                    recipe.duration = Math.floor(Math.random() * 10);
-                }
-                if (recipe.isFavourite === undefined) {
-                    let ran = Math.floor(Math.random() * 10);
-                    recipe.isFavourite = ran >= 5;
-                }
-            })
-            this.props.setRecipeList(recipeList);
-        })
+
     }
 
 
@@ -33,6 +21,10 @@ class HomeComponet extends React.Component {
 
     }
 
+    navigateToReceipeDetails(recipe){
+        this.props.setRecipeDetails(recipe);
+        this.props.history.push('/'+recipe.id)
+    }
 
     render() {
         // "id":0,
@@ -50,10 +42,10 @@ class HomeComponet extends React.Component {
                     {recipe.category && <span className="category">In {recipe.category}</span>}
                     <div className="card-container">
 
-                        <div class="card-header" >
+                        <div className="card-header" >
                             <div className="display-on-hover">
-                                <button type="button" class="btn hover-btn btn-lg btn-block">View More</button>
-                                <button type="button" class="btn hover-btn btn-lg btn-block">Quick View</button>
+                                <button type="button" onClick={()=>{this.navigateToReceipeDetails(recipe)}} class="btn hover-btn btn-lg btn-block">View More</button>
+                                <button type="button" onClick={()=>{this.navigateToReceipeDetails(recipe)}} class="btn hover-btn btn-lg btn-block">Quick View</button>
                             </div>
                         </div>
                         <div className={"card-body text-left " + (index % 2 == 0 ? 'card-body-even' : 'card-body-odd')}>
