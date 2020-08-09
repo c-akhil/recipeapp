@@ -1,10 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './layout.css';
+import recipelistreducer from '../home/recipelistreducer';
+import recipeListactions from '../home/recipeListactions';
+import { connect } from 'react-redux';
 
 class LayoutComponet extends React.Component {
-    state = {
-    };
+
 
     render() {
         return <React.Fragment>
@@ -13,7 +15,13 @@ class LayoutComponet extends React.Component {
 
                 <div className="container ">
                     <div className="row top-row">
-
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <img className="search-icon" src={"assets/Icons/Icon feather-search.png"} />
+                            </div>
+                            <input type="text" className="search-input form-control" placeholder="Search your Favourite Recipe..."
+                                value={this.props.home.searchField} onChange={(e) => { this.props.setSearchInput(e.target.value) }} />
+                        </div>
                     </div>
                     <div className="row">
                         {this.props.children}
@@ -24,4 +32,4 @@ class LayoutComponet extends React.Component {
     }
 }
 
-export default withRouter(LayoutComponet);
+export default connect(recipelistreducer, { ...recipeListactions })(withRouter(LayoutComponet));

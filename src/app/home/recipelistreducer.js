@@ -2,6 +2,7 @@ import actionConstants from '../actions'
 
 const initialState = {
     recipeList: [],
+    searchField: '',
     recipeDetails: {}
 };
 
@@ -16,6 +17,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 recipeDetails: action.payload
+            };
+        case actionConstants.SET_SEACRCH_INPUT:
+            return {
+                ...state,
+                searchField: action.payload
             };
         default:
             return state;

@@ -21,9 +21,9 @@ class HomeComponet extends React.Component {
 
     }
 
-    navigateToReceipeDetails(recipe){
+    navigateToReceipeDetails(recipe) {
         this.props.setRecipeDetails(recipe);
-        this.props.history.push('/'+recipe.id)
+        this.props.history.push('/' + recipe.id)
     }
 
     render() {
@@ -36,7 +36,10 @@ class HomeComponet extends React.Component {
         // "description":"A unique combination of Indian Uthappam (pancake) and Italian pizza"
 
 
-        let recipeListUI = [...this.props?.home?.recipeList].map((recipe, index) => {
+        let recipeListUI = [...this.props?.home?.recipeList].filter((rec) => {
+            if (!this.props?.home?.searchField?.length) return true;
+            else return new RegExp(this.props.home.searchField).test(rec.name) || new RegExp(this.props.home.searchField).test(rec.description) ||  new RegExp(this.props.home.searchField).test(rec.category)
+        }).map((recipe, index) => {
             return <React.Fragment key={"recepeList" + index}>
                 <div className="card" style={{ "backgroundImage": `url(${recipe.image})` }}>
                     {recipe.category && <span className="category">In {recipe.category}</span>}
@@ -44,8 +47,8 @@ class HomeComponet extends React.Component {
 
                         <div className="card-header" >
                             <div className="display-on-hover">
-                                <button type="button" onClick={()=>{this.navigateToReceipeDetails(recipe)}} class="btn hover-btn btn-lg btn-block">View More</button>
-                                <button type="button" onClick={()=>{this.navigateToReceipeDetails(recipe)}} class="btn hover-btn btn-lg btn-block">Quick View</button>
+                                <button type="button" onClick={() => { this.navigateToReceipeDetails(recipe) }} class="btn hover-btn btn-lg btn-block">View More</button>
+                                <button type="button" onClick={() => { this.navigateToReceipeDetails(recipe) }} class="btn hover-btn btn-lg btn-block">Quick View</button>
                             </div>
                         </div>
                         <div className={"card-body text-left " + (index % 2 == 0 ? 'card-body-even' : 'card-body-odd')}>
