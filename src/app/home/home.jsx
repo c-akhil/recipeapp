@@ -26,6 +26,10 @@ class HomeComponet extends React.Component {
         this.props.history.push('/' + recipe.id)
     }
 
+    markSearchInput(text, searchInput) {
+        return <span>{text.split(new RegExp("("+searchInput+")", 'gi')).map(t => t.toLowerCase() === searchInput.toLowerCase() ? <b>{t}</b> : t)}</span>;
+    }
+
     render() {
         // "id":0,
         // "name":"Uthappizza",
@@ -34,15 +38,15 @@ class HomeComponet extends React.Component {
         // "label":"Hot",
         // "price":"4.99",
         // "description":"A unique combination of Indian Uthappam (pancake) and Italian pizza"
-
+        const searchInput = this.props?.home?.searchField;
 
         let recipeListUI = [...this.props?.home?.recipeList].filter((rec) => {
             if (!this.props?.home?.searchField?.length) return true;
-            else return new RegExp(this.props.home.searchField).test(rec.name) || new RegExp(this.props.home.searchField).test(rec.description) ||  new RegExp(this.props.home.searchField).test(rec.category)
+            else return new RegExp(this.props.home.searchField).test(rec.name) || new RegExp(this.props.home.searchField).test(rec.description) || new RegExp(this.props.home.searchField).test(rec.category)
         }).map((recipe, index) => {
             return <React.Fragment key={"recepeList" + index}>
                 <div className="card" style={{ "backgroundImage": `url(${recipe.image})` }}>
-                    {recipe.category && <span className="category">In {recipe.category}</span>}
+                    {recipe.category && <span className="category">In {this.markSearchInput(recipe.category, searchInput)}</span>}
                     <div className="card-container">
 
                         <div className="card-header" >
@@ -53,7 +57,7 @@ class HomeComponet extends React.Component {
                         </div>
                         <div className={"card-body text-left " + (index % 2 == 0 ? 'card-body-even' : 'card-body-odd')}>
                             <div className="row">
-                                <h5 className="col-10 card-title">{recipe.name}</h5>
+                                <h5 className="col-10 card-title">{this.markSearchInput(recipe.name, searchInput)}</h5>
                                 <img className="heart-icon" onClick={() => {
                                     let recipeList = this.props.home.recipeList;
                                     recipeList[index].isFavourite = !recipeList[index].isFavourite;
@@ -64,7 +68,7 @@ class HomeComponet extends React.Component {
                                 <img className="clock-icon" src="/assets/Icons/Icon feather-clock.png" />
                                 {recipe.duration + " min"}
                             </p>
-                            <p className="card-text">{recipe.description}</p>
+                            <p className="card-text">{this.markSearchInput(recipe.description, searchInput)}</p>
                         </div>
                     </div>
                 </div>
