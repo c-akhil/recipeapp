@@ -15,7 +15,7 @@ class LayoutComponet extends React.Component {
 
                 <div className="container ">
                     <div className="row top-row">
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-3 search-input-group">
                             <div className="input-group-prepend">
                                 <img className="search-icon" src={"assets/Icons/Icon feather-search.png"} />
                             </div>

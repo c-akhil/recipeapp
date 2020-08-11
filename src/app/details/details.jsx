@@ -32,7 +32,7 @@ class DetailsComponent extends React.Component {
 
 
             <div className="col-6 text-left">
-            <span className="text-left" onClick={()=>{this.props.history.push('/')}}>Go Back</span>
+            <span className="btn btn-dark mb-5 text-left" onClick={()=>{this.props.history.push('/')}}> ← Go Back</span>
                 <img className="w-100 img-fluid" src={rec.image} />
             </div>
             <div className="col-6 text-right">
