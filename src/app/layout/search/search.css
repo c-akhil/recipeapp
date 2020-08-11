@@ -1,0 +1,19 @@
+.top-row{
+  min-height: 238px;
+}
+.search-input {
+  border: 0 !important;
+    box-shadow: none !important;
+    width: 100%;
+}
+.input-group{
+  margin-top: 50px;
+}
+.search-icon{
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+}
+.search-input-group{
+  width:50%;
+}

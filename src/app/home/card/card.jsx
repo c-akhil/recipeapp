@@ -28,7 +28,7 @@ class CardComponet extends React.Component {
 
     markSearchInput(text, searchInput) {
         if (!searchInput) return text;
-        return <span>{text.split(new RegExp("(" + searchInput + ")", 'gi')).map(t => t.toLowerCase() === searchInput.toLowerCase() ? <b>{t}</b> : t)}</span>;
+        return <span>{text.split(new RegExp("(" + searchInput + ")", 'gi')).map((t,i) => t.toLowerCase() === searchInput.toLowerCase() ? <b key={i+"s"}>{t}</b> : t)}</span>;
     }
 
     render() {
