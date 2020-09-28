@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import recipeListactions from "./../home/recipeListactions";
 import recipelistreducer from './../home/recipelistreducer';
+import CommentComponent from "./comment/comment";
 import "./details.scss";
 
 class DetailsComponent extends React.Component {
@@ -32,7 +33,7 @@ class DetailsComponent extends React.Component {
 
 
             <div className="col-6 text-left">
-            <span className="btn btn-dark mb-5 text-left" onClick={()=>{this.props.history.push('/')}}> ← Go Back</span>
+                <span className="btn btn-dark mb-5 text-left" onClick={() => { this.props.history.push('/') }}> ← Go Back</span>
                 <img className="w-100 img-fluid" src={rec.image} />
             </div>
             <div className="col-6 text-right">
@@ -85,6 +86,7 @@ class DetailsComponent extends React.Component {
                         this.props.setRecipeDetails(rec);
                     }} src={rec.isFavourite ? "/assets/Icons/Icon feather-heart.png" : "/assets/Icons/Icon feather-heart-color.png"} />
                 </p>
+                <CommentComponent />
             </div>
         </React.Fragment>
     }
